@@ -51,5 +51,6 @@ public:
 
 # 🧮 Complexity Analysis
 | METRIC   |  COMPLEXICTY    |  HOW ?  | 
+|----------|------------------|--------|
 | 🌀 TIME     |  O(n*m)   | Grid Traversal  + Level wise enque/deque |
 | 📦SPACE    |  O(100*10 + 10) + O(n*m) | BITMASK + Queue |

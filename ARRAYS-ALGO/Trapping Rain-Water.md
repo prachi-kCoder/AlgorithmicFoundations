@@ -57,7 +57,39 @@ class Solution {
 };
 ```
 
-## APPROACH3 : Stack - Approach 
+## APPROACH 3 : Stack - Approach 
 ```cpp
+int maxWater(vector<int> &arr) {
+        
+        int n = arr.size();
+        stack<int> stk ;
+        int total = 0 ;
+        
+        for (int i = 0; i < n ; i++) {
+            while (!stk.empty() && arr[i] > arr[stk.top()]) {
+                int btmIdx = stk.top();
+                stk.pop();
+                if (stk.empty()) break ;
+                
+                int left = stk.top();
+                int width = i - left - 1 ;
+                int ht = min(arr[i] , arr[left]) - arr[btmIdx] ;
+                if (ht > 0) {
+                    total += width*ht ;
+                }
+            }
+            stk.push()
+        }
 
+        return total ;
+        
+    }
 ```
+
+
+# 🔍 Complexity Analysis
+### STtack approach
+| METRIC   | COMPLEXICITY  |    HOW ? |
+|-----------|-------------|------------|
+| 🧭 TIME  |   O(N)        |  Each bar/arr[i] is pushed & popped at most once in stack and traversal of array    |
+| 🧠 SPACE |  O(N)          | Stack used       |

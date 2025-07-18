@@ -42,7 +42,7 @@ public:
 | 🧠 SPACE |  O(N*2^N)      |  visited DP + Queue (N,2^N) states :{Keep in mind :at a single level, the queue may hold up to N entries for N nodes } |
 
 ### IF YOU MAY WANT TO KNOW THE START NODE TO VISIT ALL NODES  :
-```
+```cpp
 #include <bits/stdc++.h>
 using namespace std;
 

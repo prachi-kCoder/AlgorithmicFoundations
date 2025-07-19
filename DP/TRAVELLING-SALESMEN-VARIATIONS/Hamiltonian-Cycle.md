@@ -1,4 +1,7 @@
 ## HAMILTONIAN CYCLE 
+#### INTUITION  :
+- Starting from any node get a path which ends at the same node without visiting the any other node more than 1 time and all nodes are to be visited ! Just Do BFS and keep a track of visited states using bitmask and check whether u came back to the same starting node or not ?
+  
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -54,3 +57,10 @@ int main() {
 	cout << HamiltonianCycle(n ,edges) << endl ;
 }
 ```
+
+# 🔍 Complexity Analysis
+
+| METRIC   | COMPLEXICITY  |    HOW ? |
+|-----------|-------------|------------|
+| 🧭 TIME  | O(V + E + V*(2^V)) |  Adj List formation + For all v nodes {2^V} visiting states|
+| 🧠 SPACE |  O(V + E + V*(2^V))  | Adj List + DP[nodes][mask]|

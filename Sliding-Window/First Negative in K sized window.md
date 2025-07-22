@@ -45,6 +45,26 @@ class Solution {
 ### OPTMISED APPROACH : 
 #### TWO POINTER APPROACH  :(Keep track of negIdx) 
 ```cpp
+ vector<int> firstNegInt(vector<int>& arr, int k) {
+        int n = arr.size();
+        
+        vector<int> res ;
+        
+        int negIdx = 0;
+        for ( int i = k-1 ; i < n ; i++ ) {
+            while (negIdx < n && (negIdx < i - k + 1 || arr[negIdx] >= 0)) {
+                negIdx++ ;
+            }
+            
+            if (negIdx <= i && arr[negIdx] < 0) {
+                res.push_back(arr[negIdx]) ;
+            }else {
+                res.push_back(0) ;
+            }
+        }
+        
+        return res ;
+    }
 ```
 
 # 🔍 Complexity Analysis

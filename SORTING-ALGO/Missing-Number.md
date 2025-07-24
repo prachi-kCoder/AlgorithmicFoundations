@@ -41,3 +41,6 @@ int missingNumber(vector<int>& nums) {
         return xorAll ;
     }
 ```
+
+- TIME COMPLEXICITY : O(N)
+- SPACE COMPLEXICITY : O(1)

@@ -8,7 +8,7 @@
     - Larger values of j can't contribut to the formation of smaller values of j hence , they 're formed with the values of count cal by the num processed in prev iterations .
 - Take **half** as same sum can be made by taking either the first set or the second set of nums , but its actully the same split of numbers
 - Eg : nums = {1,2,3,4} then for sum = 10  Picking up {1,4} or {2,3} means the same split hence it should be counted as 1 .
-- 
+## TABULATION (1D)
 ```cpp
 #include <bits/stdc++.h>
 #define ll long long
@@ -35,6 +35,44 @@ int main() {
     return  0 ;
  }
 
+```
+
+## MEMOIZATION (2D- DP used)
+```cpp
+#include <bits/stdc++.h>
+#define ll long long
+const int MOD = (int)1e9 + 7 ;
+using namespace std;
+ll count(int num ,int n, int target , vector<vector<ll>>& dp) {
+    if (target == 0) return 1LL ;
+    if (num > n) return 0LL ;
+    if (dp[num][target] != -1LL) return dp[num][target] ;
+    
+    ll take = 0LL ; ll skip = 0LL ;
+    
+    if (num <= target) {
+        take = count(num + 1 , n , target - num, dp);
+    }
+
+    skip = count(num + 1 , n , target , dp);
+    return dp[num][target] = (take + skip)%MOD  ;
+}
+int main() {
+    int n ;
+    cin >> n ;
+    int totalSum = n*(n+1)/2 ;
+    if (totalSum%2) {
+        cout << 0LL<< endl ;
+        return 0 ;
+    }
+    int target = totalSum/2 ;
+    
+    vector<vector<ll>> dp(n+1 , vector<ll>(target+1 , -1LL));
+    ll ans = count(1 ,n, target , dp) ;
+    
+    cout << (ans*1LL*((1+MOD)/2))%MOD << endl ;
+    return  0 ;
+ }
 ```
 
 # 🔍 Complexity Analysis

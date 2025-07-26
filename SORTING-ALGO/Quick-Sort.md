@@ -37,6 +37,8 @@ int main() {
 }
 ```
 
+- Unstable Algorithm as the relative order of equal element can be lost while making comparisions with pivot element unlike Merge Sort (which is  stable)
+  
 # 🔍 Complexity Analysis
 
 | METRIC   | COMPLEXICITY  |    HOW ? |

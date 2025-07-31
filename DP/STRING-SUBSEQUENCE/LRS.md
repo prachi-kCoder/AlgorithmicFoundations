@@ -4,7 +4,31 @@
 - Now the question arise lcs of 1 string with itself ?? Won't it be the whole string as its the same
 - But the condition for matching any 2 indices of repeating subsequence is that the i , j (indices should not match)
 - Assume it as taking LCS of 2 identical string , such that their character matching but those whose appearance index is different .
-  
+
+### POINT OF FAILURE :
+#### ATTENTION !!
+```cpp
+### this is wrong !!
+
+if (i!=  j) {
+  if (s[i-1] == s[j-1]) {
+     dp[i][j] = dp[i-1][j-1] + 1 ;
+  }else {
+     dp[i][j] = max( dp[i-1][j] , dp[i][j-1] )  ;
+  }
+}
+### this is RIGHT!!
+
+  if (i!=  j && s[i-1] == s[j-1]) {
+     dp[i][j] = dp[i-1][j-1] + 1 ;
+  }else {
+     dp[i][j] = max( dp[i-1][j] , dp[i][j-1] )  ;
+  }
+ // DP should propagate the lrs values further so that in upcoming i, j values if i!= j  , with s[i-1] = s[j-1] then dp[i-1][j-1]  should have the max values of lrs lengths  :{ Because the non-match case still contributes to the LCS dynamic buildup}
+
+
+```
+
 ```cpp
 class Solution {
   public:

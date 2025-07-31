@@ -24,7 +24,9 @@ if (i!=  j) {
   }else {
      dp[i][j] = max( dp[i-1][j] , dp[i][j-1] )  ;
   }
- // DP should propagate the lrs values further so that in upcoming i, j values if i!= j  , with s[i-1] = s[j-1] then dp[i-1][j-1]  should have the max values of lrs lengths  :{ Because the non-match case still contributes to the LCS dynamic buildup}
+ // DP should propagate the lrs values further so that in upcoming i, j values if i!= j  ,
+// with s[i-1] = s[j-1] then dp[i-1][j-1]  should have the max values of lrs lengths
+// { Because the non-match case still contributes to the LCS dynamic buildup}
 
 
 ```

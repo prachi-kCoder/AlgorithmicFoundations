@@ -1,4 +1,34 @@
-## Longest Palindromic Subsequence
+## Longest Palindromic Subsequence (LPS)
+- Problem: Find longest subsequence that reads the same forward and backward in one string.
+- State: dp[i][j] → LPS length from index i to j in s
+## TABULATION :
+
+```cpp
+If s[i] == s[j] → dp[i][j] = 2 + dp[i+1][j-1]
+Else → dp[i][j] = max(dp[i+1][j], dp[i][j-1])
+```
+
+```cpp
+int longestPalinSubseq(string &s) {
+        int n = s.length();
+        vector<vector<int>> dp(n , vector<int>(n , -1)); 
+        
+        for (int i = 0; i < n ; i++ ) dp[i][i] = 1 ;
+        for (int len = 2 ; len <= n ; len++) {
+            for (int i = 0 ; i <= n-len ; i++) {
+                int j = i + len - 1 ;
+                if (s[i] == s[j]) {
+                    dp[i][j] = (len == 2) ? 2 : 2 + dp[i+1][j-1] ;
+                }else {
+                    dp[i][j] = max(dp[i+1][j] , dp[i][j-1]) ;
+                }
+            }
+        }
+        
+        return dp[0][n-1] ;
+```
+
+## MEMOIZATION :
 
 ```cpp
 // User function Template for C++

@@ -65,9 +65,9 @@ class Solution {
 };
 ```
 
-# 🔍COMPLEXICITY ANALYSIS
+## 🔍 Complexity Analysis
 
-| METRIC   | COMPLEXICITY  |    HOW ? |
-|-----------|-------------|------------|
-| 🧭 TIME  |   O(n*n)      |  for every ith index, all n index visit in worst case |
-| 🧠 SPACE |  O(n*n)    | DP Table  |
+| Metric     | Complexity | Explanation |
+|------------|------------|-------------|
+| 🧭 Time     | O(n²)       | We fill a 2D DP table for all substrings `s[i..j]`, with `i ≤ j`, leading to ~n² transitions. |
+| 🧠 Space    | O(n²)       | A 2D DP matrix of size `n × n` stores LPS values for each substring. |

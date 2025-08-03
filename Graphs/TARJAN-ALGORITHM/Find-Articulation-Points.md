@@ -1,41 +1,73 @@
 # FINDING ARTICULATION POINTS IN GRAPH BY TARJAN'S ALGORITHM
 
-- Algo : Tarjan's is used to find articulation points — nodes whose removal would disconnect the graph. It's based on two key values:
-- ### disc[u] : Discovery time when node u is first visited
-- ### low[u] : The lowest discovery time reachable from the subtree rooted at that vertex (via tree or back edges)
+# TARJAN'S ALGO
+- Maintain low , tin, bool , is_arti
+- **low[v] >= tin[u]** that means the node u is articulation because the nbr(v) if can't be vis at a low time ie  it is visited via the node u , and as soon as u node is removed the node v couldn't be visited result in the graph being split in disconneted parts
+- Do check the node u is not 1st node of componect ie par != -1
+- Because first node of graph comp is to be handle by checking whether it has unvisited children > 1 , then if u node (1st node) if removed then graph surely splits
+- Do not forget to use is_arti / set<int> point  for only unique entries as multiple nbr of u can conclufe for u to be articulation pts hence to avoid duplication , get uniq articulation points marked & at the end print them up!
 
-- ## 🔍 Why the Root Node Needs Special Handling
-  - For non-root nodes {say v}:
-  - ## low[v] >= disc[u] {for a child v of u} , then u is Articulation point
-  As more time to reach v than u , ie v is being reached via u .
-
-- For Root node : {There are no parent node}
-- Instead, we check: if the root has 2 or more independent DFS calls (children), it means its removal would split the graph — so it's an articulation point.
-
-- ```cpp
-  void dfs(int u, int timer, vector<int>& disc, vector<int>& low, vector<bool>& vis, vector<int>& parent, vector<int>& articulationPts) {
-    vis[u] = true;
-    disc[u] = low[u] = timer++;
-    int children = 0;
-
-    for (int v : adj[u]) {
+ ```cpp
+  #include <bits/stdc++.h>
+using namespace std;
+vector<vector<int>> adj ;
+int timer = 0 ;
+void dfs(int node , int par , vector<bool>& vis, vector<int>& low , vector<int>& tin, vector<bool>& is_arti) {
+    vis[node] = true ;
+    low[node] = tin[node] = timer ;
+    timer++ ;
+    
+    int children = 0 ;
+    for (int v : adj[node]) {
         if (!vis[v]) {
-            parent[v] = u;
-            children++;
-
-            dfs(v, timer, disc, low, vis, parent, articulationPts);
-
-            low[u] = min(low[u], low[v]);
-
-            if (parent[u] == -1 && children > 1)
-                articulationPts.push_back(u);
-            if (parent[u] != -1 && low[v] >= disc[u])
-                articulationPts.push_back(u);
-        } else if (v != parent[u]) {
-            low[u] = min(low[u], disc[v]);  // Back-edge
+            children++ ;
+            dfs(v , node , vis , low, tin, is_arti) ;
+            low[node] = min(low[node] , low[v]); 
+            
+            if (low[v] >= tin[node] && par != -1) {
+                is_arti[node] = true;
+            }
+            
+        }else if( v != par) {
+            low[node] = min(tin[v], low[node]);
         }
     }
+    if (par == -1 && children > 1) {
+        is_arti[node] = true;
+    }
+}
+void arti(int n) {
+    vector<int> tin(n);
+    vector<int> low(n);
+    vector<bool> vis(n);
+    vector<bool> is_arti(n,false) ;
+    for (int i = 0; i < n ; i++) {
+        if (!vis[i]) {
+            dfs(i , -1 , vis , low , tin, is_arti) ;
+        }
+    }
+    for (int i = 0; i < n; i++) {
+        if (is_arti[i]){
+            cout << (i+1) << " ";
+        }
+        cout << endl ;
+    }
+}
+int main() {
+    // undirected
+    vector<vector<int>> edges = {{1,2},{2,3},{1,3},{3,4},{4,8},{4,5},{8,9},{9,10},{10,8},{5,7},{7,6},{6,5}};
+    int n = 10 ;
+    adj.resize(10) ;
+    for (vector<int> e : edges) {
+        int u = e[0] ; int v = e[1] ;
+        u-- , v-- ;// 0 based
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+    arti(n ) ;
+    return 0 ;
 }
 
-  ``` 
+}
+``` 
 

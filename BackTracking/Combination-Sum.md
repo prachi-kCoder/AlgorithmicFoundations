@@ -34,6 +34,6 @@ public:
 
 | METRIC   | COMPLEXICITY  |    HOW ? |
 |-----------|-------------|------------|
-| 🧭 TIME  |  O(2^N * Target) | For all N : {Binary choices : Include / Skip and go to the next} , MaxDepth : Target/min(candidates[i])|
-| 🧠 SPACE | O(2ⁿ * target) | Recursion Stack + Results set of comb , Each combination |
+| 🧭 TIME  |  O(2^k ) | For all N : {Binary choices : Include / Skip and go to the next} , MaxDepth : Target/min(candidates[i]) as minElement can be called mulitple times to make the target giving the worst case of k depth |
+| 🧠 SPACE | O( k ) | Recursion Stack  |
 

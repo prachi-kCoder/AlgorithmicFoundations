@@ -1,7 +1,7 @@
 # Johnson's Algorithm
 
 - For a two-machine flow shop problem, the optimal solution can be found using Johnson's Algorithm. This algorithm provides a method to determine the optimal sequence of jobs to minimize the makespan.
-Example Ques : Two emp e1 , e2 working at a firm for n orders such that Every order needs to be worked on by both of them , e1 will work and after that e2 , time to work on each order i by e1 is in B[i] , and by e2 is in C[i], min time to complete all n orders .
+- Example Ques : Two emp e1 , e2 working at a firm for n orders such that Every order needs to be worked on by both of them , e1 will work and after that e2 , time to work on each order i by e1 is in B[i] , and by e2 is in C[i], min time to complete all n orders .
 1) Divide the orders into two sets:
 Set 1: Orders where B[i]<C[i].
 Set 2: Orders where B[i]≥C[i].

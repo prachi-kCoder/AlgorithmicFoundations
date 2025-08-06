@@ -41,6 +41,15 @@ int main() {
 }
 ```
 
+- When using `vector<vector<vector<ll>>> dp` as a global DP table in Digit DP problems, **prefer `.assign()` over `.resize()`** when resetting the table between multiple calls (e.g., for `solve(L-1)` and `solve(R)`).
+
+- **Why?**  
+  `.resize()` only changes the outer dimensions and does **not guarantee** reinitialization of inner values. This can lead to stale or incorrect values being reused across calls.
+
+- **`.assign()`**, on the other hand, **fully reinitializes** the entire DP structure with the specified default value (e.g., `-1LL`), ensuring correctness and consistency.
+
+- ✅ This is especially important when the DP table is declared globally and reused across multiple queries.
+
 # 🔍 Complexity Analysis
 
 | METRIC   | COMPLEXICITY  |    HOW ? |

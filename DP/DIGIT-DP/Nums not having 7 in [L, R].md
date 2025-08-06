@@ -30,9 +30,11 @@ ll count(int num){
     return solve(0 , true , true , false , s , s.length()) ;
 }
 int main() {
-	int l = 3 ;
-	int r = 50 ;
-	cout << count(r) - count(l-1) << endl ;
+	int l , r ;
+	cin >> l >> r ;
+	int result = count(r) - count(l-1) ;
+	if (l <= 0) result -= 1 ; // Only if Natural number asked speficially to exclude 0 as it will be counted as not having 7
+	cout << result << endl ;
 	return  0 ;
 }
 

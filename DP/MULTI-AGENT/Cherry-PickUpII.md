@@ -91,4 +91,4 @@ public:
 | 🔢 Metric  |	📊 Complexity | 	🧠 Why? |
 |-----------|-------------|------------|
 | 🧭 TIME  |     O(Nx M x M)  |   For each row r, both robots can be at any column c1 and c2, leading to N × M × M unique states. Each state explores up to 9 transitions (3 moves per robot), but constant branching doesn’t affect asymptotic complexity.    |
-| 🧠 SPACE |     O(71 x 71 x 71)      |   The DP table stores results for every (r, c1, c2) triple. With constraints N ≤ 70, M ≤ 70, this fits within dp[71][71][71].       |
+| 🧠 SPACE |  O(MxM) {Tabulation} ,  O(71 x 71 x 71)  {Memo}    |   The DP table stores results for every (r, c1, c2) triple. With constraints N ≤ 70, M ≤ 70, this fits within dp[71][71][71].       |

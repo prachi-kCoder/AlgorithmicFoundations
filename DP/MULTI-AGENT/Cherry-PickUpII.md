@@ -2,7 +2,52 @@
 
 - MultiAgent DP works the best as 2 robots are to be given equals chances over the reachable cherries and in order to achieve global maxima we do
 - States of DP : r , c1 , c2 as both the robots in any movement will come to the next Row (that common to both) , but the dc could be {-1,0,1} hence we consider all possible combinations of columns .
- 
+  
+# TABULATION
+```cpp
+class Solution {
+public:
+    int cherryPickup(vector<vector<int>>& grid) {
+        int n = grid.size();
+        int m = grid[0].size();
+        vector<vector<long long>> prev_dp(m , vector<long long>(m ,-1LL)) ;
+        vector<vector<long long>> dp ;
+
+        prev_dp[0][m-1] = grid[0][0] + grid[0][m-1] ;// first row with no prev row
+
+        for (int r = 1 ; r < n ; r++) {
+            dp.assign(m , vector<long long>(m , -1LL)) ;
+            
+            for (int c1 = 0 ; c1 < m ; c1++) {
+                for (int c2 = 0 ; c2 < m ; c2++) {
+                    long long cherries = (c1 == c2) ? grid[r][c1] : grid[r][c1] + grid[r][c2] ;
+
+                    for (int pc1 = c1 - 1 ; pc1 <= c1 + 1; ++pc1) {
+                        for (int pc2 = c2 - 1; pc2 <= c2 + 1; ++pc2) {
+                            if (pc1 >= 0 && pc1 < m && pc2 >= 0 && pc2 < m && prev_dp[pc1][pc2] != -1LL) {
+                                dp[c1][c2] = max(dp[c1][c2] , prev_dp[pc1][pc2] + cherries) ;
+                            }
+                        }
+                    }
+                }
+            }
+            if (r < n-1) {
+                prev_dp = dp ;
+            }
+        }
+        long long ans = 0LL;
+        for (int c1 = 0; c1 < m; ++c1) {
+            for (int c2 = 0; c2 < m; ++c2) {
+                ans = max(ans , dp[c1][c2]) ;
+            }
+        }
+
+        return  ans ;
+    }
+};
+```
+
+## MEMOIZATION
 ```cpp
 class Solution {
 public:

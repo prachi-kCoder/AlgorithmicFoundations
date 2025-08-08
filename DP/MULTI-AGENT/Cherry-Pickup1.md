@@ -51,5 +51,5 @@ public:
 
 | METRIC   | COMPLEXICITY  |    HOW ? |
 |-----------|-------------|------------|
-| 🧭 TIME  |   O(N*N*N*N)     | 2 PLAYER CONFIGURATION {r1,c2,r2,c2}  all may be explored  |
-| 🧠 SPACE |   O(51*51*51*51)         |  Dp table + Rec Stack          |
+| 🧭 TIME  |   O(N x N x N x N)     | 2 PLAYER CONFIGURATION {r1,c2,r2,c2}  all may be explored  |
+| 🧠 SPACE |   O(51x51x51x51)         |  Dp table + Rec Stack          |

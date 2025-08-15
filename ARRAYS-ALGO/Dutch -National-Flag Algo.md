@@ -21,12 +21,12 @@ void sort012(vector<int>& arr) {
         }
     }
 ```
-### Important points to keep in mind :
-- - Mid is not increment if swapping happens with arr[high] because if arr[high] = 2 then even after swapping arr[mid] = 2 , so high decrements by 1 then then for high-1 , the same mid is evaluated
-  - If mid = 1 then mid increments while and if any smaller value lets say 0 comes than it is resolved by swapping with arr[low]
-  - 
-# Time Comlexicity :O(N)
-# Space Comlexicity :O(1)
+#### Important points to keep in mind :
+   - Mid is not increment if swapping happens with arr[high] because if arr[high] = 2 then even after swapping arr[mid] = 2 , so high decrements by 1 then then for high-1 , the same mid is evaluated
+   - If mid = 1 then mid increments while and if any smaller value lets say 0 comes than it is resolved by swapping with arr[low]
+  
+- Time Comlexicity : `O(N)`
+- Space Comlexicity : `O(1)`
 
 
 

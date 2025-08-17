@@ -43,3 +43,8 @@ public:
 };
 
 ```
+### BUT SUCH PROBLEM CAN BE DONE MORE EFFICIENTLY WITH DP + BITMASK 
+
+```cpp
+
+```

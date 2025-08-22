@@ -57,6 +57,6 @@ int main() {
 
 | 📊 METRIC  | 📈 COMPLEXITY	  |  🧩 EXPLAINATION |
 |-----------|-------------|------------|
-| 🧭 TIME  |    O(N*2*2*10) | N-> length of num {b} , binary states:(leading_zero, tight) , 0-9 {Prev digit} |
-| 🧠 SPACE |   O(N*2*2*10)        | Dp table |
+| 🧭 TIME  |    O(Nx2x2x10) | N-> length of num {b} , binary states:(leading_zero, tight) , 0-9 {Prev digit} |
+| 🧠 SPACE |   O(Nx2x2x10)        | Dp table |
 

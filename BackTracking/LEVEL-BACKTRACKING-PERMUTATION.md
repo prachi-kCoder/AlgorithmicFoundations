@@ -3,7 +3,7 @@
 - Often used to get all possible `UNIQUE` permutations of a string / array
 - We look for `start` always
   
-- Q1) Get all permutations unique permutations of arr of len = arr.size()
+##### Q1) Get all permutations unique permutations of arr of len = arr.size()
 - Here `start` was not necessary as v was shrinking !
 -  ✅ Unique permutations via level-based backtracking
 -  🔁 Erase + insert to simulate element usage
@@ -88,4 +88,39 @@ class Solution {
 
 
 # BUT NOW LET'S USE `start` 
-- 
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+// Level BackTracking for Unique Subsequences for  arr<int> 
+void print(vector<int>& v) {
+    for (int e : v) {
+        cout << e << " " ;
+    }
+    cout << endl ;
+}
+void helper(int start, vector<int>& sub, vector<int>& v) {
+    print(sub) ; // subsequece form at stages 
+    if (start == v.size()) {
+        return ;
+    }
+    for (int i = start ; i < v.size() ; ++i) {
+        if (i > start && v[i] == v[i - 1]) continue; // skip duplicates
+        sub.push_back(v[i]) ;// take 
+        helper(i + 1, sub , v) ;
+        sub.pop_back();
+    }
+}
+void unique_subsequence(vector<int>& v) {
+    int n = v.size();
+    // get all same element together
+    sort(v.begin() , v.end()) ;
+    vector<int> sub ;
+    helper(0, sub, v ) ;
+}
+int main() {
+    vector<int> v = {2,3,1,1,2};
+    unique_subsequence(v) ;
+}
+
+```

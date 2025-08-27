@@ -7,7 +7,7 @@
 - `k` : iterator to make the right partition so that the cost of the whole chain is minimised
 - That is for all `k` `(1, n-1)` :
   
-|Left Cost  | Right Cost | CurrCost |
+|Left Cost  |   CurrCost | Right Cost|
 |-------------|----------|-------------|
 | mat[i  to k] | {CurrCost} | mat[k+1 to j] |
 | (a[i-1]xa[i] ) X (a[k-1]xa[k]) | a[i-1] x a[k] x a[j] | (a[k]xa[k+1]) X (a[j-1]xa[j]) |

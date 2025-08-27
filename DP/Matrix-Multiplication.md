@@ -50,5 +50,35 @@ int main() {
 ```
 ## TABULATION 
 ```cpp
-
+#include <bits/stdc++.h>
+using namespace std;
+// mat = a[i-1]Xa[i] ;
+int mcm(vector<int>& a ) {
+    int n = a.size();
+    
+	vector<vector<int>> dp(n+1 , vector<int>(n+1 , 0)) ;
+	// len = 1 (i == j) dp[i][j] = 0  {single mat }
+	
+	for ( int len = 2 ; len <= n ; len++ ) {
+	    for ( int i = 1 ; i <= n-len ; i++ ) {
+	        int j = i + len - 1 ;
+	        dp[i][j] = INT_MAX ;
+	        
+	        for (int k = i ; k < j ; k ++) {
+	            int l_cost = dp[i][k] ;
+	            int r_cost = dp[k+1][j] ;
+	            int curr_cost = (a[i-1]*a[k]*a[j]) ;
+	            dp[i][j] = min(dp[i][j] , l_cost + r_cost + curr_cost) ;
+	        }
+	    }
+	}
+    
+    return dp[1][n-1] ;
+}
+int main() {
+	vector<int> a = {1,2,3,4,3};
+	int n = a.size(); 
+	cout << mcm(a ) << endl ;	
+	return 0 ;
+}
 ```

@@ -51,4 +51,53 @@ class Solution {
 |-----------|-------------|------------|
 | 🧭 TIME  |       O(N*(LOG(mxt)))      | For n jobs , Binary Search over TimeLine of length = mx_time |
 | 🧠 SPACE |      O(N) + O(MX)      | Vectorof pairs of jobs , time line array  |
-`
+
+- MOST OPTIMISED :
+- no erase function for timeline erase can be done to make it more optmal as erasing is expensive
+```cpp
+class Solution {
+  public:
+// DSU approach
+    vector<int> par ;
+    int find(int x ) {
+        if (par[x] == x) return x ;// ie available slot
+        return par[x] = find(par[x]) ;
+    }
+    void merge(int u , int v) { // to prev slot
+        par[u] = v ;
+    }
+    vector<int> jobSequencing(vector<int>& deadline, vector<int>& profit) {
+        int n = deadline.size();
+        vector<pair<int,int>> jobs(n) ;
+        int mx = 0 ;
+        for (int i = 0 ; i < n ; i++) {
+            jobs[i] = {profit[i] , deadline[i]} ;
+            mx = max(mx , deadline[i]) ;
+        }
+        sort(jobs.begin() , jobs.end() , greater<>()) ;
+        par.resize(mx+1) ;
+        for (int i = 0; i <= mx ; i++) par[i] = i ;
+        int cnt = 0 ;
+        int total = 0 ;
+        
+        for (auto&[p , d] : jobs) {
+            int slot = find(d) ;
+            if (slot > 0)  {
+                merge(slot , slot-1) ;
+                cnt++;
+                total += p ;
+            }
+            // no time <= x available!
+        }
+        
+        return {cnt , total} ;
+    }
+};
+```
+
+# 🔍COMPLEXICITY ANALYSIS
+
+| 📊 METRIC  | 📈 COMPLEXITY	  |  🧩 EXPLAINATION |
+|-----------|-------------|------------|
+| 🧭 TIME  |    O(N*log(MX))  |  Sorting takes O(N log N); each job assignment uses DSU find() and merge() with nearly constant time due to path compression — governed by the inverse Ackermann function α(n), which grows extremely slowly  |
+| 🧠 SPACE |    O(N + MX)        |  V {Job pairs} , Parent { latest available slot under the deadline} |

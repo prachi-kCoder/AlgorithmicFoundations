@@ -1,5 +1,44 @@
 # Egg-Drop
 
+### MOST OPTMISED 
+- Just change the linear iteration over k -> `binary iteration` over k values
+
+```cpp
+public:
+    int dp[1001][1001];
+    
+    int solve(int e ,int f) {
+      if (f <= 1) return f ;
+      if (e == 1) return f ;
+      if (dp[e][f] != -1) return dp[e][f];
+       
+      int moves = f ;
+      int l = 1 , r = f ;
+      while (l < r) {
+          int mid = l + (r - l) / 2;
+          
+          int broken = solve(e-1 , mid - 1) ;
+          int not_broken = solve(e , f - mid) ;
+          int curr_moves = 1 + max(broken , not_broken) ;
+          moves = min(moves , curr_moves) ;
+          if (broken < not_broken) {
+              l++ ;
+          }else{
+              r-- ;
+          }
+      }
+       
+      return dp[e][f] = moves ;
+    }
+    int eggDrop(int e, int f) {
+       if (e == 1) return f ;
+        if (f <= 1) return f ;
+        memset(dp ,-1, sizeof(dp)) ;
+        return solve(e, f);
+       
+}
+
+```
 
 - `THESE approaches may undergo TLE {But logic is built from these 2 approaches}`
 

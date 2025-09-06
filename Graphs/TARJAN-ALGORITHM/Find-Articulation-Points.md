@@ -6,7 +6,8 @@
 - Do check the node u is not 1st node of componect ie par != -1
 - Because first node of graph comp is to be handle by checking whether it has unvisited children > 1 , then if u node (1st node) if removed then graph surely splits
 - Do not forget to use is_arti / set<int> point  for only unique entries as multiple nbr of u can conclufe for u to be articulation pts hence to avoid duplication , get uniq articulation points marked & at the end print them up!
-
+- & From already visited nbr we just take {not != par} tin[v]
+  
  ```cpp
   #include <bits/stdc++.h>
 using namespace std;

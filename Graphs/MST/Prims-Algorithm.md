@@ -91,5 +91,5 @@ int spanningTree(int V, vector<vector<int>>& edges) {
 
 | 📊 METRIC  | 📈 COMPLEXITY	  |  🧩 EXPLAINATION |
 |-----------|-------------|------------|
-| 🧭 TIME  |    O( (V+E)*log(V))         |   As all edges are explored O(E), and take in PQ and each insertion into PS take O(logV), each node is papped at most once O(vlogV) {only if unvisited one } }|
+| 🧭 TIME  |    O( (V+E)*log(V))         |   As all edges are explored O(E), and take in PQ and each insertion into PS take O(logV), each node is popped at most once O(vlogV) {only if unvisited one } }|
 | 🧠 SPACE |   O(v+e)         |   Adjacency list stores all edges, and priority queue can hold up to V nodes|

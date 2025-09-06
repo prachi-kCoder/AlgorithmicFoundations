@@ -6,8 +6,10 @@
 - Consider better over `DENSE GREAPH` ad multiple connection are explored upto a node and the one with least cost is explored with other are discarded.
   ### Keep in mind vis a node only after adding in PQ {ie they've become a part of mst } and then check for next unvisited nodes :
 - People usually get confused int 2 ways but they'rereally very diff :-
+
+
 #### WRONG WAY :
-	- Here we are marking nodes vis even before consider them in the pq , ie they ' re not yet sorted as per their order in pq , PQ determines which node to be connected via the min_cost possible making the MST , but here marking nbr nodes vis[v] = true , here we're eleiminating the chance of reaching those v nodes with lower cost with other path we may encounter in the future with some other nodes .
+- Here we are marking nodes vis even before consider them in the pq , ie they ' re not yet sorted as per their order in pq , PQ determines which node to be connected via the min_cost possible making the MST , but here marking nbr nodes vis[v] = true , here we're eleiminating the chance of reaching those v nodes with lower cost with other path we may encounter in the future with some other nodes .
 ```cpp
 vis[0] = true ;
 while (!pq.empty()) {

@@ -36,6 +36,56 @@ class Solution {
 ```
 
 
+# INTERESTINGLY LCS re-CONSTRUCTION IS ALSO ASKED :
+- And you can also choose on the baised construction of lcs
+- Bias LCS Reconstruction :
+
+```bash
+- eg :s  = algopath
+t = pathalzguo
+here lcs1 = algo {if we are biased to get the lcs of start early in s}
+To prioritize earlier in s:
+  if (dp[i-1][j] >= dp[i][j-1]) {
+      i--; // move up → earlier in s
+  } else {
+      j--; // move left
+  }
+
+here lcs2 = path {if we are biased to get the lcs of start early in t}
+To prioritize earlier in t:
+  if (dp[i][j-1] >= dp[i-1][j]) {
+      j--; // move left → earlier in t
+  } else {
+      i--; // move up
+  }
+
+```
+### LCS RECONSTRUCTION COMPLETE CODE 
+```cpp
+int i = n , j = m ;// 2 pointer to make them 
+    string lcs = "" ;
+    while (i > 0  && j > 0 ) {
+        if (s[i-1] == t[j-1]) {
+            lcs.push_back(s[i-1]) ;
+            i-- ; j-- ;
+        }else  {// mis match so len decides 
+            // To prioritize the starting lcs of t 
+            // if ( dp[i][j-1] >= dp[i-1][j]) {
+            //     j--;
+            // }else{
+            //     i-- ;
+            // }
+        // To prioritize the starting lcs of s 
+            if ( dp[i-1][j] >= dp[i][j-1]) {
+                i-- ;
+            }else {
+                j-- ;
+            }
+        }
+    }
+    reverse(lcs.begin() , lcs.end()) ;
+```
+
 # 🔍COMPLEXICITY ANALYSIS
 
 | 📊 METRIC  | 📈 COMPLEXITY	  |  🧩 EXPLAINATION |

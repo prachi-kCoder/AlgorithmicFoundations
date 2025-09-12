@@ -1,7 +1,7 @@
 # Binary-search-loop confusion
 - this is not a problem , you can find same answer solved with these 2 while loops
   
-```
+```cpp
 int res = 0;
 while (low <= high) {
     int mid = low + (high - low) / 2;
@@ -20,7 +20,7 @@ cout << res << endl;
 - ✅ Termination: When low > high, you've exhausted the search space.
 - ✅ Answer: Stored in res.
 
-```
+```cpp
 
 while (low < high) {
     int mid = low + (high - low + 1) / 2;

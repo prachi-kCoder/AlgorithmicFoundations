@@ -83,10 +83,63 @@ int main() {
   Total number of configurations : `N x (N - 1) x (N - 2)x ...x 1= N!`
   
   In every recursive call since left_dia , right_dia , upper cols are checked hence it becomes : `N*(N!)`
-  
+
+# NOW  OPTIMISED VERSION :
+- Iterative checking for all l_diagonal and r_diag causes TLE
+- OBSERVE :
+- The `main diagonal (↘)` runs from top-left to bottom-right. All cells on the same `↘ diagonal` have the same value of `i - j`
+- The  `anti-diagonal (↙)` runs from top-right to bottom-left. All cells on the same `↙ diagonal` have the same value of `i + j`
+- Then to avoid placing any queen check at any ith row whether the j , i-j and i+j are already occupied means same col , `↘ diagonal` ,& `↙ diagonal`  are occupied or not ie they're then not right placement .
+- i-j can be negative for all i < j so to avoid `index out of bound error` we take `i-j+n-1` as if `i+j` will correctly identify in such cases and `i-j+n-1` won't give any error .
+
+## FINAL CODE SOLUTION 
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+int n ;
+int mx_score ;
+vector<bool> col , main_dia , anti_dia ;
+vector<vector<int>> mat ;
+void solve(int i, int score) {
+    if (i >= n) {
+        mx_score = max(mx_score , score);
+        return  ;
+    }
+    for (int j = 0; j < n ; j++) {
+        if (col[j] || main_dia[i-j+n-1] || anti_dia[i+j]) continue ;
+        col[j] = main_dia[i-j+n-1] = anti_dia[i+j] = true ;
+        solve(i+1 , score + mat[i][j]);
+        col[j] = main_dia[i-j+n-1] = anti_dia[i+j] = false ;
+    }
+}
+int main() {
+    cin >> n ;
+    mat.resize(n , vector<int>(n)) ;
+    for (int i = 0 ; i < n ; i++) {
+        for (int j = 0 ; j < n ; j++) {
+            cin >> mat[i][j] ;
+        }
+    }
+
+    mx_score = -1 ;
+    col.resize(n , false) ;
+    main_dia.resize(n , false) ; 
+    anti_dia.resize(n , false) ;
+
+    solve( 0 , 0 );
+    cout << mx_score << endl ;
+
+    return 0;
+}
+```
+
 # 🔍COMPLEXICITY ANALYSIS
 
 | 📊 METRIC  | 📈 COMPLEXITY	  |  🧩 EXPLAINATION |
 |-----------|-------------|------------|
 | 🧭 TIME  |    O(N*(N!))     | Read above .  |
 | 🧠 SPACE |    O(N*N) + O(N)       | Board  + Recusive stack    |
+
+
+
+

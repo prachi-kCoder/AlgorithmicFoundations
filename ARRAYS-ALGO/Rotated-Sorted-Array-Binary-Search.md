@@ -10,7 +10,7 @@
 - If mid in left sorted part and target is not in left sorted part `ie arr[l] > target` so eliminate the left sorted part itself
 
 - Similarly for right sorted part compare target if it lies in right sorted part so eliminate left by `l = mid + 1` else  eliminate right `r = mid-1`
-```
+```cpp
 long long l = 0 , r = N-1 ;
         long long res = -1 ; 
 

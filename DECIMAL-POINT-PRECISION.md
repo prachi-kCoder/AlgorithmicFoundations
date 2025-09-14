@@ -3,7 +3,7 @@
 - In c++ decision point precised value are not printed by default even if you take the `num` {double type} as divisions or printing `cout` does their own rounding
 ## DISPLAY PREICISE
 - Use `iomanip`  `setprecision(6)` upto any decimal places
-```
+```cpp
 #include<iomanip>
 #include<iostream>
 using namespace std ;
@@ -16,7 +16,7 @@ int main(){
 ```
 
 ## To `return` and precisied values upto a certain deciaml point
-```
+```cpp
 #include<iostream>
 using namespace std ;
 double solve(int n1 , int n2) {

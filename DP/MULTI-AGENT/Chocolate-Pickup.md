@@ -46,7 +46,7 @@ class Solution {
 
 # OPTMISATION 
 - Since to compute for any r `row` we just need to keep track of values of `r-1` row then we can just keep track of it rather that values of all rows
-```
+```cpp
 class Solution {
   public:
     const int mn = (int)70*70*(-100) ;

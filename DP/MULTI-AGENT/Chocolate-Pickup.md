@@ -1,5 +1,6 @@
 ## Chocolate-Pickup.md
-
+- Try here :https://www.geeksforgeeks.org/problems/chocolates-pickup/1
+  
 - Multiagent approach is  necessary to check all possible combinations and states of cols of R1,R2
 - `Keep in mind if both R1,R2 in same col then add that val grid[r][c1]  only once`
 

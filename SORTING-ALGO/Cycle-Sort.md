@@ -6,8 +6,8 @@
 - The array must contain distinct integers.
 - All values should be in the range [1, n] or [0, n−1], where n is the size of the array.
 - Each value has a unique correct position:
-- 1) For [1, n], value x should be at index x - 1.
-- 2) For [0, n−1], value x should be at index x.
+- 1) For `[1, n]`, value x should be at index `x - 1`.
+- 2) For `[0, n−1]`, value x should be at index `x`.
 
 ### ❌ What It Can’t Handle
 - Duplicates: It breaks the assumption that each value has a unique position.

@@ -1,5 +1,5 @@
 # COUNT- SORT :
-- **Only for when the element are in non-megative ranges , and upto a fixed mx values (reachable)!**
+- **Only for when the element are in non-negative ranges , and upto a fixed mx values (reachable)!**
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;

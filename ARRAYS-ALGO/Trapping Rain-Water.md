@@ -1,4 +1,8 @@
 # TRAPPING RAIN WATER :
+- Don't get confused with another problem `Maximum Water Container` : https://leetcode.com/problems/container-with-most-water/description/
+- That one doesnot consider the lines/towers coming in b/w the leftmost and the rightmost as obstruction { in that you just need to get a pair of `l` or `r` of max capacity}
+
+
 ## Approach 1 :
 - Space Complexicity O(N) , Time Complexcity O(N)
 

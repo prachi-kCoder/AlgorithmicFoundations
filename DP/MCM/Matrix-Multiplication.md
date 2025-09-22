@@ -1,21 +1,24 @@
 # Matrix-Multiplication
 ##### MIN COST MATRIX MULTIPLICATION 
-- Cost for 2 matrix `A1 (axb)` , `A2(cxd)` => Cost = `axbxd`
-- Final matrix order after multiplication => `(axd)`
-- arr = {1,2,3,4,5}  for n = 5  , 4 matrices : `a[i-1]Xa[i]` at all i {1 , n-1}
 
-- `k` : iterator to make the right partition so that the cost of the whole chain is minimised
-- That is for all `k` `(1, n-1)` :
+- Array arr[] of len N -> `(N-1)` matrices
+- arr[0,1,2,3,4,5]
+##### How partition is made ?:
+
+
+- Mat : `arr[i-1] X arr[i] .... arr[k-1]Xarr[k]` | `arr[k+1]Xarr[k+2] .... arr[j]`
+- Final Dimension: `arr[i-1]Xarr[k]`  & `arr[k]Xarr[j]`  So curr_cost = `arr[i-1] x arr[k] x arr[j]`
+- And left_cost = dp[i][k]  
+- And right_cost = dp[k+1][j]
+
+- Just get the right partitions with minimum cost 
+### BASE CASE
+- dp[i][i] = 0
+- As i start from 1 so the 1 matrix :`arr[i-1]Xarr[i]`  have 0 cost of multiplication
+- here i = j means 1 chain length of 1 matrix arr[i-1]Xarr[i] only
   
-|Left Cost  |   CurrCost | Right Cost|
-|-------------|----------|-------------|
-| mat[i  to k] | {CurrCost} | mat[k+1 to j] |
-| (a[i-1]xa[i] ) X (a[k-1]xa[k]) | a[i-1] x a[k] x a[j] | (a[k]xa[k+1]) X (a[j-1]xa[j]) |
-|	a[i-1]xa[k] 	|  -> CurrCost <- | a[k] * a[j] |
-
-
-- Curr cost 
-- Mini mise the total cost check all partitions
+- &  k -> {i to j-1 }as the last matrix right dimention is j  so right most matrix can be arr[j-1]xarr[j]
+- Hence the rightmost partition = DP[k+1][j] and k at max goes upto j-1 
 
 ## MEMOIZATION
 ```cpp
@@ -82,3 +85,10 @@ int main() {
 	return 0 ;
 }
 ```
+
+# 🔍COMPLEXICITY ANALYSIS
+
+| 📊 METRIC  | 📈 COMPLEXITY	  |  🧩 EXPLAINATION |
+|-----------|-------------|------------|
+| 🧭 TIME  |      O(N x N x N)    | For N lengths , i [1,n-len] , k [i , j-1]|
+| 🧠 SPACE |     O(N x N)       |         Dp table   |

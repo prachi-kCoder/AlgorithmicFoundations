@@ -34,6 +34,9 @@ public:
 };
 ```
 
+- TC : O(N*2*3)
+- SC : O(N*2*3)
+
 - NOW Thingk at the end we want to make 2 transactions {Optimally make the 2 transaction with sum of P1 + P2 to be max}
 ```cpp
 class Solution {
@@ -61,3 +64,41 @@ public:
     }
 };
 ```
+- TC : O(N)
+- SC : O(N)
+
+- Key observation is that
+- For transaction 1 : You pay price and get the profit : P1
+- For transaction 2 : You pay price prices[j] - P1 {already gain from T1} + price[i]  while selling it
+- P2 to be maximised by : `price[i] - (buy2 - P1)  `
+```cpp
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int n = prices.size();
+        if (n <= 1) return 0 ;
+        
+        int buy1 = INT_MAX ;
+        int p1 = INT_MIN ;
+        int buy2 = INT_MAX ;
+        int p2 = INT_MIN ;
+
+        for (int i = 0; i < n ; i++) {
+            buy1 = min(buy1 , prices[i]) ;
+            p1 = max(p1 , prices[i] - buy1) ;
+            buy2 = min(buy2 , prices[i] - p1) ;
+            p2 = max(p2 , prices[i] - buy2) ;
+        }
+        return p2 ;
+    }
+};
+```
+
+
+# 🔍COMPLEXICITY ANALYSIS
+
+| 📊 METRIC | 📈 COMPLEXITY	  |  🧩 EXPLAINATION |
+|-----------|-------------|------------|
+| 🧭 TIME  |     O(n)       |     One pass      |
+| 🧠 SPACE |      O(1)      |    No space        |
+

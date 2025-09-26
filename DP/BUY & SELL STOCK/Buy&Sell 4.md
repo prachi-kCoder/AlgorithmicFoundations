@@ -4,8 +4,18 @@
 - At most k transactions :
 - Important edge case that can be handled effectively  :
 -  `if k >= n/2 so you can make UNLIMITED TRANSACTION` : Think any transaction take 2 days : {even if you buy at D1 and sold at D2 and again buy at D2 then sell at D3  => then the -price[i] + price[i] at D2 will be nullified -> That the transaction make it BUY at D1 and sell at D3 effectively ie 3 days : So atleast any 1 transaction you need atleast 2 days} so k transaction n/2 is given if k >= n/2 ie NO BOUNDS OF K TRANSACTION , just FOUCS on making as much profit as you can!!
-
--  
+-  Greedily take all increments in prices
+```cpp
+ if (k >= n/2) {
+            ll profit = 0 ; 
+            for (int i = 1 ; i < n ; i++) {
+                if (prices[i] > prices[i-1] ){
+                    profit += prices[i] - prices[i-1] ;
+                }
+            }
+            return profit ;
+        }
+```
   
 # TABULATION :
 

@@ -46,6 +46,49 @@ class Solution {
 };
 ```
 
+## space optimisation from O(N x (K+1) x 2 ) => O((K+1) x 2 )
+```cpp
+#define ll long long
+class Solution {
+public:
+    const int mn = (-1)*(int)(1e6 + 1) ;
+    // just keep prev and curr
+    int maxProfit(int k, vector<int>& prices) {
+        int n = prices.size() ; 
+        vector<vector<ll>> prev(k+1 ,vector<ll>(2 , mn)) ;
+        
+        // t = 0
+        for (int t = 0 ; t <= k ; t++) {
+            prev[t][0] = 0 ;// i=0
+        }
+
+        prev[1][1] = -prices[0] ;
+
+
+        for (int i = 1 ; i < n ; i++) {// 
+            // i+1 days ->  ceil(half(days)) = transactions 
+            vector<vector<ll>> curr(k+1 , vector<ll>(2 , mn)) ;
+            curr[0][0] = 0 ;
+            curr[1][0] = 0 ;// any index starts 1st transaction : not holding 
+            for (int t = 1 ; t <= min(k,(i+2)/2) ; t++ ) {
+                // for not-hold / sell
+                curr[t][0] = max(prev[t][0] , prices[i] + prev[t][1] );
+                // for hold / buy
+                curr[t][1] = max(prev[t][1] , -prices[i] + prev[t-1][0] );
+            }
+            prev = curr ;
+        }
+
+        ll res = 0 ;
+        for (int t = 1 ; t <= k ; t++) {
+            res = max({prev[t][0] , res});
+        }
+        return res ;
+    }
+};
+
+```
+
 # memoization 
 ```cpp
 #define ll long long 

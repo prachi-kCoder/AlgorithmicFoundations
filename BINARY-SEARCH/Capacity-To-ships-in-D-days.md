@@ -45,3 +45,11 @@ public:
     }
 };
 ```
+
+
+# 🔍COMPLEXICITY ANALYSIS
+
+| 📊 METRIC | 📈 COMPLEXITY	  |  🧩 EXPLAINATION |
+|-----------|-------------|------------|
+| 🧭 TIME  |    O(N* log(Total_sum))  |  for All valid cap val in range [mx(wts) , sum(wts)]  we check for the possibility of packing n items in d days         |
+| 🧠 SPACE | O(1)     |        No extra space    |

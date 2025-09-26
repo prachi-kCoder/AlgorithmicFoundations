@@ -35,8 +35,8 @@ public:
 };
 ```
 
-- TC : O(N*2*3)
-- SC : O(N*2*3)
+- TC : O(N x 2 x3)
+- SC : O(N x 2 x3)
 
 - NOW Thingk at the end we want to make 2 transactions {Optimally make the 2 transaction with sum of P1 + P2 to be max}
 ```cpp

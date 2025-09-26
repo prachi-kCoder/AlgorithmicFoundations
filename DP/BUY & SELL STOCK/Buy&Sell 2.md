@@ -2,7 +2,7 @@
 Try : https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
 
 ## TABULATION :{BOTTOM-UP APPROACH}
-```
+```cpp
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {

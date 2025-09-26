@@ -32,7 +32,15 @@ class Solution {
     const int mn = ((int)(1e6) + 1)*(-1) ;
     int maxProfit(vector<int>& prices, int k) {
         int n = prices.size();
-        
+        if (k >= n/2) {
+            ll profit = 0 ; 
+            for (int i = 1 ; i < n ; i++) {
+                if (prices[i] > prices[i-1] ){
+                    profit += prices[i] - prices[i-1] ;
+                }
+            }
+            return profit ;
+        }
         vector<vector<vector<ll>>> dp(n , vector<vector<ll>>(k+1 , vector<ll>(2 , mn)));
         
         // allowing 1st trasaction at all indices

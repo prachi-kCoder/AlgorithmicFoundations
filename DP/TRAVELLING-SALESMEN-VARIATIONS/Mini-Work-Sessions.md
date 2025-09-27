@@ -6,7 +6,7 @@
 - Brute says : Check all possible `N!` combinations of all n- tasks and compute the mini sessions , but this is IMPRACTICAL even for small n
 - `Dp[mask][time]` :  Keeps the min-session cnt with a state defined by mask and the time of the ongoing session
 
-# BOTTOM-UP
+# Memoization - Top Down approach
 ```cpp
 class Solution {
 public:

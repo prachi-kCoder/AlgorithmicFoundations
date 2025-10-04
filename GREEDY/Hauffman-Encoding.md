@@ -75,3 +75,12 @@ class Solution {
     }
 };
 ```
+
+
+# 🔍COMPLEXICITY ANALYSIS
+
+| 📊 METRIC | 📈 COMPLEXITY	  |  🧩 EXPLAINATION |
+|-----------|-------------|------------|
+| 🧭 TIME  |     O(N x logN )    |  As the pq will assess N = m + m/2 + m/4 + m/8 ... so on so at max total nodes = 2N-1 |
+| 🧠 SPACE |    O(N x log N)     |   The priority queue holds up to N nodes, and the tree has 2N - 1 nodes in total (including internal nodes). DFS uses O(H) stack space, where H ≤ N. |
+

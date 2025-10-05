@@ -1,7 +1,7 @@
 ## HOUSE-ROBBER
 
 -- Keeping in mind  : Possibility of skipping at any house is necessary to globally maximise the sum 
-```
+```cpp
 class Solution {
   public:
     int n ;

@@ -1,7 +1,8 @@
 # DJIKTRA'S ALGO WITH SHORTEST PATH
 ## WITH DISCOUNT COUPON
-- Key track fo 
-```
+- Key track fo
+
+```cpp
 #include <bits/stdc++.h>
 
 using namespace std;

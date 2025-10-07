@@ -1,4 +1,6 @@
 # Boyer-Moore Voting Algorithm
+Try here : https://www.geeksforgeeks.org/problems/majority-element-1587115620/1
+
 ### FOR MAJORITY WITH COUNT > N/2
 - Used to check whether the any element is in majority is freq > n/2
 

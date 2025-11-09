@@ -1,6 +1,8 @@
 ## HOUSE-ROBBER-2 
 - Your turn : https://www.geeksforgeeks.org/problems/house-robber-ii/1
-- Here just divide the domain in 2 separatel halves to ensure the cycically the last & first element never comes adjacent to each other 
+- To `prevent the 1st and last element to be taken in score as in cyclic movement both can't be considered together` :
+  -- Solve range1 : `[0,n-2]`
+  -- Solve range2 : `[1,n-1]`
 
 ```cpp
 class Solution {

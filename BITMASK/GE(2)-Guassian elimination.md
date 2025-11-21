@@ -27,7 +27,8 @@
 ```
 
 ```cpp
-onst ll MAX_BITS = 32;
+#define ll long long
+const ll MAX_BITS = 32;
 vector<ll> make_basis(vector<ll>& a) {
     vector<ll> basis(MAX_BITS , 0) ;
     

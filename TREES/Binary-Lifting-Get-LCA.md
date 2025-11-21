@@ -1,4 +1,5 @@
 # Binary-Lifting-Get-LCA.md
+```
 - 2 PHASES
 ### LEVELLING :
 - Level them: First lift the deeper node up until both are at the same depth.
@@ -7,7 +8,10 @@ fOR [J = log-1 to 0 ]
 - If up[u][j] != up[v][j], lift both up to those ancestors.
 - If they are equal, you do nothing at that level and continue checking smaller jumps. because their may be smaller jumps possible as from LCA & onwards they both will be having same ancestor , but we need the lowest possible ! ie the LCA ! so continue in loop until j = 0 is check if until the direct par say its equal so no further lifting !
 
-Final step: After the loop, both u and v are just below the LCA. So the LCA is up[u][0].
+## Final step:
+ After the loop, both u and v are just below the LCA. So the LCA is up[u][0].
+```
+
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;

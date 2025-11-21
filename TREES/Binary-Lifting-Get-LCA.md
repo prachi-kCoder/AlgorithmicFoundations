@@ -96,3 +96,8 @@ int main() {
 }
 
 ```
+
+## TC :
+- O(NLOGN + QlogN) = For all N nodes binary lifting of logN and for all Q queries again to get LCA logN is applied
+## SC :
+O(NLOGN)

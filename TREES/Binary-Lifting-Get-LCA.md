@@ -46,25 +46,26 @@ void preprocess(int n) {
         }
     }
 }
-int get_lca(ll u , ll v) {
-    if (depth[u] < depth[v]) swap(u,v) ;
-    // LEVLELLING 
+ll get_lca(ll u , ll v) {
+    if (depth[u] < depth[v]) swap(u,v);
+
+    // Lift u up to same depth as v
     for (ll j = LOG-1 ; j >= 0 ; j--) {
-        if (up[u][j] != -1 && depth[u] -(1<<j) >= depth[v]) {
-            u = up[u][j] ;
+        if (up[u][j] != -1 && depth[u] - (1<<j) >= depth[v]) {
+            u = up[u][j];
         }
     }
-    
-    if (u == v) return u ;
-    
+
+    if (u == v) return u;
+
+    // Lift both until their parents match
     for (ll j = LOG-1 ; j >= 0 ; j--) {
-        if (up[u][j-1] != up[v][j-1]) {
+        if (up[u][j] != up[v][j]) {
             u = up[u][j];
             v = up[v][j];
         }
     }
-    
-    return up[u][0] ; //lca 
+    return up[u][0];
 }
 int main() {
 	ll n , q;

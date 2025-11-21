@@ -1,6 +1,6 @@
 ## Binary-Lifting
-- Get Kth - Ancestor
-- Relation :-
+- Get Kth - Ancestor :
+
 ```cpp
 up[u][j] = up[up[u][j-1]][j-1];
 ```
@@ -10,7 +10,19 @@ up[u][j] = up[up[u][j-1]][j-1];
 - Then , jump another 2^(j-1) steps from there -> up[up[u][j-1]][j-1]
 - So the total jump is:
 **2^(j-1) + 2^(j-1) = 2^j**
+- During the processing We compute 2^j the ancestor of all nodes By splitting in ``2^j-1 + 2^j-1`` = 2^j-1 the steps up lift
 
+
+Then to compute the KTH ancestor using the dp table we use it as K can be represented in decomposition of powers of 2 only
+- For all set bit positions tells use how much to lift you curr u then we keep on lifting until reached the Kth ancestor !
+
+```
+Loop j,   Check Condition,    Action,            			Distance Covered
+j=0,      Is b0​ set in K?   (k & (1 << 0)),u←up[u][0]    	(Jump 20=1 step),1
+j=1,	  Is b1​ set in K?  (k & (1 << 1)),u←up[u][1] 		(Jump 21=2 steps),1+2=3
+j,		  Is bj​ set in K?  (k & (1 << j)),u←up[u][j]         (Jump 2j steps), ..... Sum of all steps ≤K
+```
+- TC = O(logK)  
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;

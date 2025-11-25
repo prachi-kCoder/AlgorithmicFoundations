@@ -1,4 +1,9 @@
 ## Grundy-PN-positions
+```
+The Grundy Value (Nimber): The Sprague-Grundy theorem generalizes this P/N concept using Grundy values (or Nimbers).
+A state i is a P-position (LOSS) if and only if its Grundy value, G(i) :, is 0.
+A state i is an N-position (WIN) if and only if its Grundy value, G(i), is non-zero.
+```
 
 ```cpp
 #include <bits/stdc++.h>

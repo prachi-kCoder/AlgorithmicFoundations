@@ -103,6 +103,25 @@ void forward2(ll dp[]) {
         }
     }
 }
+void backward1(ll dp[]) {
+    for (int bit = 0 ; bit < LOG ; bit++) {
+        for (int i = 0; i < MAXN ; i++) { // Changed loop direction to be consistent with forward, but the logic works either way
+            if (i&(1<<bit)) {
+               dp[i] -= dp[i^(1<<bit)] ;
+            }
+        }
+    }
+}
+
+void backward2(ll dp[]) {
+    for (int bit = 0 ; bit < LOG ; bit++) {
+        for (int i = 0; i < MAXN ; i++) { // Changed loop direction to be consistent with forward, but the logic works either way
+            if (i&(1<<bit)) {
+               dp[i^(1<<bit)] -= dp[i] ; // Corrected bug: should subtract dp[i] (superset value)
+            }
+        }
+    }
+}
 ll freq1[MAXN];
 ll freq2[MAXN];
 int main() {

@@ -74,6 +74,11 @@ Because every superset relationship is walked once along each bit.
 Each superset reduces to a smaller mask in exactly one way for each bit → no double counting.
 ```
 
+# Inverse Sum Over Subsets (ISOS) DP : BACKWARD1 & BACKWARD2
+- `backward1(ll dp[])` : Kind of Backward Function: It is used to reverse the Sum Over Subsets (SOS) transformation. By subtracting `dp[i^(1LL<<BIT)] from dp[i], it removes the contribution of the smaller subset at each bit step.
+- `backward2(ll dp[])` : subtract the value of the superset mask `dp[i^(1LL<<BIT)] -= dp[i]`
+
+
 
 # FOR CSES - BIT SOS DP PROBLEM :
 ```cpp

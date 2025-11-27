@@ -79,8 +79,7 @@ Each superset reduces to a smaller mask in exactly one way for each bit → no d
 - `backward2(ll dp[])` : subtract the value of the superset mask `dp[i^(1LL<<BIT)] -= dp[i]`
 
 ### LOOK :
-|----------------------|----------------|------------------|-------------------|
-|   Transformation     |     Loop   |  Direction for Mask (i) |     Logic       |
+|   Transformation     |     Loop Direction for Mask (i) |     Logic       |
 |----------------------|------------|-----------------------|-------------------|
 | SOS (Subsets) `dp[i] += dp[i^(1<<bit)]`| Forward (0 to MAXN-1) | Information flows from smaller subsets to larger supersets (from i without the bit to i with the bit)|
 | Inverse SOS `dp[i] -= dp[i^(1<<bit)]` |Backward (MAXN-1 to 0) |Information flows from larger supersets to smaller subsets (from i with the bit to i without the bit) to correctly undo the summation. |

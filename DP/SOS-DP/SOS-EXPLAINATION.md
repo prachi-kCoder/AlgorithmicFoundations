@@ -1,7 +1,7 @@
 # SOS-DP SUM OVER SUBSETS - DP
 
-✔ Sum over all submasks of a mask : `g[mask] = Σ f[submask] for all (submask ⊆ mask)`
-✔ Sum over all supermasks of a mask : `g[mask] = Σ f[supermask] for all (mask ⊆ supermask)`
+- ✔ Sum over all submasks of a mask : `g[mask] = Σ f[submask] for all (submask ⊆ mask)` 
+- ✔ Sum over all supermasks of a mask : `g[mask] = Σ f[supermask] for all (mask ⊆ supermask)`
 
 🔎 Brute Force Approach :
  - to compute  : `g[mask] = Σ f[submask] for all (submask ⊆ mask)`

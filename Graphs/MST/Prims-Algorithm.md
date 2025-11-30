@@ -18,6 +18,7 @@ while (!pq.empty()) {
 	for (auto nbr : adj[u]) {
 		int v = nbr.first ; int wt = nbr.second ;
 		if (!vis[v]) {
+			vis[v] = true ;
 			pq.push({wt , v});
 		}
 	}

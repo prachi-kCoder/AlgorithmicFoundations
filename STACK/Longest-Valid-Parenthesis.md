@@ -1,39 +1,33 @@
-# Longest Valid Parenthesis
+# Longest Valid Parenthesis with wildcard '*'
+- https://leetcode.com/problems/valid-parenthesis-string/description/
 
-# 3 Approaches
-#### `STACK BASED ` :
+- Here `high` : the max cnt of `(` that can be considered , `low` : lowest cnt of `(` : that is just needed to match all `)`
+- So if ever the high < 0 ie {total `(` + `*` together not enough for `)`}
+- if `low != 0 ` ie the lowest possible `(` are to be matched rightly to the `)` + `*` ie  why low -- on getting a `*` only if possible ie if low > 0
 
-- Stack allows to keep track of the prev index unmatched because as soon as any index match they get paired and popped out .
-- Keep placeholder in stk = -1 ,initially
-- As soon as you get `(` push into the stack the ith idx 
-- As soon as you get `)` pop out of the stack the ith idx
-- the stack keeps the unmatched index and on any `)` parenthesis , they can be merged with the `(` came far prev in string .
-- This all supports matching of open-closing parenthesis 
 ```cpp
 
-class Solution {
-  public:
-    int maxLength(string& s) {
-        int n = s.length();
-        
-        stack<int> stk ;
-        stk.push(-1) ;
-        int mx_len = 0 ;
-        
-        for (int i = 0 ; i < n ; i++) {
-            if (s[i] == '(') {
-                stk.push(i) ;
+bool checkValidString(string s) {
+        int low = 0 , high = 0 ;
+
+        for (char c : s) {
+            if (c == '(') {
+                low++ ;
+                high++ ;
+            }else if (c == ')') {
+                if (low >0) low-- ;
+                high-- ;
             }else {
-                stk.pop();
-                if (stk.empty()) stk.push(i) ; // prev_end
-                else {
-                    mx_len = max(mx_len , i-stk.top()) ;
-                }
+                if (low >0) low-- ;
+                high++ ;
+            }
+            if (high < 0) {
+                return false ;
             }
         }
-        return mx_len ;
+
+        return low == 0 ;
     }
-};
 ```
 
 # 🔍COMPLEXICITY ANALYSIS

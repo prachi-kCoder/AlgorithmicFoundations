@@ -8,7 +8,7 @@
 - Path reconstruction ambiguity: During the backtracking phase, you need a clear stopping condition. If par[s] == -1, the loop might terminate prematurely or misinterpret the path.
 
 
-```
+```cpp
 #include <bits/stdc++.h>
 
 using namespace std;

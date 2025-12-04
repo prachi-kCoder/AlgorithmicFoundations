@@ -1,4 +1,20 @@
 # mo's algo
+- Another way for range queries but only for OFFLINE QUERIES {ie no updates}
+- If q queries is to be answered over an array of size N then this `SQRT DECOMPOSITION TECHNIQUE IS USED`
+- TC : `O((N + Q) x sqrt(N))`  {unlike the  of brute force O(N*Q) }!!
+  
+### intuition :
+- Can be used to get mode, median, sum , distinct cnt etc over the ranges .
+- Amortization via Block Decomposition
+- The original array A of size N is divided into N blocks, each of size sqrt{N}.
+- BLOCK SIZE = S = sqrt(N)
+- So block index = `i / sqrt(N)`
+- Sort the queries based on the computed = block index (i / sqrt(N)) , then based on R
+- it’s just a way to minimize pointer movement by grouping queries into √N buckets.
+
+- MAINTAIN A BLOCK : Shrink and expand the left and right ends right
+
+- DQERY CODE {Distinct count of elements in ranges[l,r]}
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;

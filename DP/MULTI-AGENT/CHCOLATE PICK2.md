@@ -1,5 +1,5 @@
 # CHOCOLATE-PICKUP 2 
-
+- Do here :https://www.geeksforgeeks.org/problems/chocolate-pickup-ii/1
 #### Keep in mind dp is made over steps (N+M-2) in total
 `Dp state = dp[t][r1][r2]`
 `r1 + c2 = t = r2 + c2`

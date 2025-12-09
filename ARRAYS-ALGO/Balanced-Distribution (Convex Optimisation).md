@@ -86,3 +86,82 @@ int main() {
 }
 
 ```
+
+- BUT THE QUES CAN BE EVEN SIMPLER : like on code forces simplily solveing with PQ worked : because k1+k2 <= 10^3 so better go byt making each move to the highest values
+- Since if any move x->x-1  then in terms of ERROR: x^2 -> (x-1)^2
+- https://codeforces.com/problemset/problem/960/B
+```
+#include <bits/stdc++.h>
+// #include <ext/pb_ds/assoc_container.hpp>
+// #include <ext/pb_ds/tree_policy.hpp>
+using namespace std;
+// using namespace __gnu_pbds;
+#define IO ios_base::sync_with_stdio(0) , cin.tie(0) , cout.tie(0)
+#define ll long long
+#define pll pair<ll,ll>
+#define F first
+#define S second
+const ll mod = (ll)1e9 + 7 ;
+// #define Oset tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update>
+int main() {
+    // ll t ;
+    // cin >> t ;
+    // while (t-- > 0) {
+        ll n , k1 , k2 ;
+        cin >> n >> k1 >> k2 ;
+        vector<ll> a(n) ;
+        vector<ll> b(n) ;
+        for (ll &e : a) cin >> e ;
+        for (ll &e : b) cin >> e ;
+        
+        ll move = k1 + k2 ;
+        priority_queue<ll> pq ;
+        ll total_diff = 0LL ;
+        for (ll i = 0 ; i < n ; i++) {
+            ll d = abs(a[i] - b[i]) ;
+            pq.push(d);
+            total_diff += d ;
+        }
+        if (move == 0) {
+            ll ans = 0LL ;
+            while (!pq.empty()) {
+                ll c = pq.top(); pq.pop();
+                ans += 1LL*c*c ;
+            }
+            cout << ans << endl ;
+            return 0 ;
+        }
+        if (total_diff <= move) {
+            ll r = abs(move - total_diff) ;
+            if (r%2) {
+                cout << 1 << endl ;
+            }else {
+                cout << 0 << endl ;
+            }
+            return 0 ;
+        }
+        while (!pq.empty() && move > 0 ) {
+            ll curr = pq.top(); pq.pop();
+            
+            curr-- ;
+            move-- ;
+            if (curr > 0)  pq.push(curr) ;
+        }
+        
+        ll ans = 0LL ;
+        while (!pq.empty()) {
+            ll c = pq.top();
+            ans += 1LL * c * c ;
+            pq.pop();
+        }
+        
+        cout << ans << endl ;
+        
+    // }
+    
+    return 0;
+    
+}
+
+```
+

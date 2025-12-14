@@ -3,10 +3,11 @@
 - in Standard Sieve : {Take space upto O(N) and then to get the prime factor we take another O(SQRT(N))}
 - Optimisd way is to use `SPF {Smallest Prime Factor of i}`
 - that is rather that is_prime array of sieve we record the smallest prime of any ith number
-|--------------------------------------------------------------------------------------|
+
 | Index(i) | 1  | 2  | 3  | 4  | 5  | 6  | 7  | 8  | 9  | 10 | 11 | 12 | 13 | 14 | 15 |
 |----------|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
 | SPF[i]   | 1  | 2  | 3  | 2  | 5  | 2  | 7  | 2  | 3  | 2  | 11 | 2  | 13 | 2  | 3  |
+
 
   
 

@@ -42,7 +42,7 @@ int spf[MAX_N] ;
 void sieve() {
     iota(spf , spf + MAX_N , 0) ; // ie spf[i] = i (init)
     
-    for (int i = 2 ; i * i < MAX_N ; i++) {
+    for (int i = 2 ; i * i <= MAX_N ; i++) {
         if (spf[i] == i) {// ie prime
             for (int j = i*i ; j < MAX_N ; j += i) {
                 if (spf[j] == j) {

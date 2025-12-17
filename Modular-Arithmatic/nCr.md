@@ -50,3 +50,50 @@ class Solution {
     }
 };
 ```
+
+
+# METHOD 2: Iterative Fraction Method
+- BEST in case nCr is need once or Twice so small and easy code 
+```
+nCr = n! / (r! * (n-r)!) => {n *..* (n-r+1) * (n-r)! } / r! * (n-r)! => then simplified => {1LL * n * ( n-r+1 ) / r! }
+So simply get : n*(n-1)*(n-2)*...*(n-r+1) / r!  it works fine
+```
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define IO ios_base::sync_with_stdio(0) , cin.tie(0) , cout.tie(0)
+#define ll long long
+
+const ll mod = (ll)998244353 ;
+
+ll mod_expo(ll base , ll expo) {
+    ll res = 1LL ;
+    while (expo > 0) {
+        if (expo&1) res = (1LL * res * base ) % mod ;
+        base = (1LL * base * base ) % mod ;
+        expo >>= 1 ;
+    }
+    return res ;
+}
+ll mod_inv(ll x ) {
+    return mod_expo(x , mod-2) ;
+}
+ll nCr(ll n , ll R) {
+    ll res = 1LL ;
+    
+    for (ll r = 1 ; r <= R ; r++) {
+        res = (1LL * res * (n-r+1))% mod ;
+        res = (1LL * res * mod_inv(r)) % mod ;
+    }
+    return res ;
+}
+int main() {
+    ll n , r; 
+    cin >> n >> r ;
+    cout << nCr(n , r) << endl ;
+    return 0;
+    
+}
+
+```

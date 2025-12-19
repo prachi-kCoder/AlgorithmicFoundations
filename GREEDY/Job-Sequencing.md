@@ -52,47 +52,54 @@ class Solution {
 | 🧭 TIME  |       O(N*(LOG(mxt)))      | For n jobs , Binary Search over TimeLine of length = mx_time |
 | 🧠 SPACE |      O(N) + O(MX)      | Vectorof pairs of jobs , time line array  |
 
-- MOST OPTIMISED :
+### MOST OPTIMISED : USE DSU TO find prev avaiable slot and update it with find(slot-1) everytime so that in case you reach 0 ca be checke .
 - no erase function for timeline erase can be done to make it more optmal as erasing is expensive
 ```cpp
-class Solution {
-  public:
-// DSU approach
-    vector<int> par ;
-    int find(int x ) {
-        if (par[x] == x) return x ;// ie available slot
+vector<int> par ; 
+    void init(int n) {
+        par.resize(n+1);
+        for (int i = 1 ; i <= n ;i++) {
+            par[i] = i ;
+        }
+    }
+    int find(int x) {
+        if (x == par[x]) return x ;
         return par[x] = find(par[x]) ;
     }
-    void merge(int u , int v) { // to prev slot
-        par[u] = v ;
-    }
-    vector<int> jobSequencing(vector<int>& deadline, vector<int>& profit) {
+
+    vector<int> jobSequencing(vector<int> &deadline, vector<int> &profit) {
         int n = deadline.size();
-        vector<pair<int,int>> jobs(n) ;
+        int tprofit = 0 ;
+        
+        vector<vector<int>> jobs(n,vector<int>(2 ,0)) ;
         int mx = 0 ;
-        for (int i = 0 ; i < n ; i++) {
-            jobs[i] = {profit[i] , deadline[i]} ;
+  
+        for (int i = 0; i < n ;i++) {
+            jobs[i][0] = profit[i] ;
+            jobs[i][1] = deadline[i] ;
             mx = max(mx , deadline[i]) ;
         }
-        sort(jobs.begin() , jobs.end() , greater<>()) ;
-        par.resize(mx+1) ;
-        for (int i = 0; i <= mx ; i++) par[i] = i ;
-        int cnt = 0 ;
-        int total = 0 ;
+        init(mx) ;
         
-        for (auto&[p , d] : jobs) {
-            int slot = find(d) ;
-            if (slot > 0)  {
-                merge(slot , slot-1) ;
-                cnt++;
-                total += p ;
+        sort(jobs.rbegin() , jobs.rend()) ;
+       
+        int t = 0 ;
+        for (int i = 0 ; i < n ; i++) {
+            int d = jobs[i][1] ;
+            int p = jobs[i][0] ;
+            
+            int available_slot = find(d) ;
+            if (available_slot > 0) {
+                tprofit += p ;
+                t++ ;
+                
+                par[available_slot] = find(available_slot-1) ;
+                
             }
-            // no time <= x available!
         }
         
-        return {cnt , total} ;
+        return {t , tprofit};
     }
-};
 ```
 
 # 🔍COMPLEXICITY ANALYSIS

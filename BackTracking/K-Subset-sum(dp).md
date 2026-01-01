@@ -1,5 +1,5 @@
 # K-Subset-sum(dp)
-
+# DO : https://www.geeksforgeeks.org/problems/partition-array-to-k-subsets/1
 - BRUTE FORCE ie keep a vector<int> subsets and try adding all ele of arr in any of these while backtracking -> TLE as O(k^n) not feasible of k , n upto [1,10]
 -  OPTIMISED DP + BITMASK
 -  TargetVal of each subset = Sum of all val / k ;

@@ -2,10 +2,13 @@
 ## naive V/S inverse DP
 ```
 In the naive DP , we fix floor and try all possible drops , => O(E.F^2) as we have inner loop to select the kth floor to cover the worst case
-INVERSE DP : flips perspective , 'minimum no. of m moves with e eggs ? loop of moves is outer {to make reach the f floor in min moves with given e eggs}
+INVERSE DP : flips perspective , 'minimum no. of m moves with e eggs ? loop of moves is outer {to make reach the f floor in min moves with given e eggs}.
+
 The recurrence : dp[e][m] = dp[e-1][m-1] + dp[e][m-1] + 1  floors  , EGG BREAKS so counts the count floor belor, EGG survive then floor about & +1 for curr floor .
+
 this BRANCHING structure  means coverage grows like binomial coefficient with increasing egg counts => exponential growth
-2^m >= f  => log2m >= f  so the complexicity O(E.log2m) nearly , so O(E.moves) is much faster than O(E.F^2)
+2^m >= f  => log2m >= f  so the complexicity O(E.log2m) nearly , so O(E.moves)  , WHERE moves = log2(f) is much faster than O(E.F^2)
+
  then space optimisation with 1D dp 
 ```
 ```cpp

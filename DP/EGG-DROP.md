@@ -86,3 +86,28 @@ int main() {
 }
 
 ```
+
+```cpp
+int min_moves1D(int e, int f) {
+    if (e == 1) return f;
+    if (f <= 1) return f;
+
+    // floor_cnt[i] stores the max floors we can check with 'i' eggs
+    // for the current number of moves 'm'.
+    vector<int> floor_cnt(e + 1, 0);
+    
+    for (int m = 1; m <= f; m++) {
+        // Iterate backwards to use values from the previous 'move' (m-1)
+        // This is the standard 1D DP optimization technique.
+        for (int i = e; i >= 1; i--) {
+            floor_cnt[i] = floor_cnt[i] + floor_cnt[i - 1] + 1;
+            
+            // If the max floors covered with e eggs and m moves >= f, we are done
+            if (floor_cnt[i] >= f) return m;
+        }
+    }
+    return f;
+}
+```
+<img width="1016" height="552" alt="image" src="https://github.com/user-attachments/assets/a80bbf82-cc6d-4e81-b62a-eca0fa8b21ec" />
+

@@ -1,5 +1,23 @@
 ## nCr
+- BEST WAY TO GET FACT WITHOUT APPLY ANY MOD - ARITHMETIC , IF not more that INF is 10^18 is the limit otherwise the mod fact,inv fact is right !
+  
+```cpp
+ll C[62][62];
+    const ll INF = 2e18; // Slightly more than max possible n
 
+    void precompute() {
+        for (int i = 0; i <= 61; i++) {
+            C[i][0] = 1LL;
+            for (int j = 1; j <= i; j++) {
+                // Saturated addition to prevent overflow
+                if (C[i-1][j-1] >= INF || C[i-1][j] >= INF || (C[i-1][j-1] + C[i-1][j]) >= INF)
+                    C[i][j] = INF;
+                else
+                    C[i][j] = C[i-1][j-1] + C[i-1][j];
+            }
+        }
+    }
+```
 `n! /((n-r)!*(r!))`
 
 - fact , invfact are necessary as to compute the div {No division operator in mod-arithmetic} so we multiply with invFact of the deno terms

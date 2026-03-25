@@ -94,43 +94,35 @@ int main() {
 
 ## FINAL CODE SOLUTION 
 ```cpp
-#include <bits/stdc++.h>
-using namespace std;
-int n ;
-int mx_score ;
-vector<bool> col , main_dia , anti_dia ;
-vector<vector<int>> mat ;
-void solve(int i, int score) {
-    if (i >= n) {
-        mx_score = max(mx_score , score);
-        return  ;
-    }
-    for (int j = 0; j < n ; j++) {
-        if (col[j] || main_dia[i-j+n-1] || anti_dia[i+j]) continue ;
-        col[j] = main_dia[i-j+n-1] = anti_dia[i+j] = true ;
-        solve(i+1 , score + mat[i][j]);
-        col[j] = main_dia[i-j+n-1] = anti_dia[i+j] = false ;
-    }
-}
-int main() {
-    cin >> n ;
-    mat.resize(n , vector<int>(n)) ;
-    for (int i = 0 ; i < n ; i++) {
-        for (int j = 0 ; j < n ; j++) {
-            cin >> mat[i][j] ;
+class Solution {
+    vector<vector<int>> res ;
+  public:
+    void solve(int r , int col_mask , int ldia , int rdia , int n , vector<int>& curr) {
+        if (r >= n) {
+            res.push_back(curr) ;
+            return ;
+        }
+        
+        for (int c = 0 ; c < n ; c++) {
+            int bit = (1 << c) ;
+            if (col_mask&bit) continue ;
+            if (ldia&bit) continue ;
+            if (rdia&bit) continue ;
+            
+            curr.push_back(c+1) ;
+            solve(r+1 , col_mask|bit , (ldia|bit) << 1 , (rdia|bit) >> 1 , n , curr ) ;
+            curr.pop_back();
         }
     }
-
-    mx_score = -1 ;
-    col.resize(n , false) ;
-    main_dia.resize(n , false) ; 
-    anti_dia.resize(n , false) ;
-
-    solve( 0 , 0 );
-    cout << mx_score << endl ;
-
-    return 0;
-}
+    
+    vector<vector<int>> nQueen(int n) {
+        vector<int> curr ;
+        
+        solve(0 , 0 , 0 ,0, n , curr ) ;
+        
+        return res ;
+    }
+};
 ```
 
 # 🔍COMPLEXICITY ANALYSIS

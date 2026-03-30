@@ -18,10 +18,30 @@ ll C[62][62];
         }
     }
 ```
+
 `n! /((n-r)!*(r!))`
 
 - fact , invfact are necessary as to compute the div {No division operator in mod-arithmetic} so we multiply with invFact of the deno terms
 - invfact[n] = mod_inv(fact[n])
+
+# for small n , m 
+```
+//  n * (n - r + 1) / r !  works best
+
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long 
+long long uniq_path(ll n , ll m) { // ALL PATH FROM TOP-LEFT TO BTM RIGHT n+m-2 total moves and fixing R/D moves => count of ways NCr , r = n-1 , and N = n+m-2 
+    ll N = n + m - 2 ; ll r = min(n - 1 , m-1) ;
+    
+    ll res = 1LL ;
+    for (ll i = 1 ; i <= r ; i++ ) {
+        res = (1LL * res * (N - i + 1)) / i ;
+    }
+    
+    return res ;
+}
+```
 ### RECURRENCE RELATIONS USED :
 - FACT : fact[n] = n*(fact[n-1]) 
 - INV-FACT : invfact[n] = (n+1)*(invfact[n+1])

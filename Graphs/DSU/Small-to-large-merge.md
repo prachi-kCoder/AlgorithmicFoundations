@@ -1,11 +1,12 @@
 ## Small-to-large-merge
 - here : https://codeforces.com/problemset/problem/600/E
-- 3 points 
+```
 - SMALLER TO LARGE is by swapping the root `mp` to `childmap` reference exchange so that to ensure we make least possible insertions
 - Even if swapped then also childmap is to be inserted do not forget {to merge the per smaller sized root now exchanged!}
 - `WHY NLOGN ?` : as mp_sz = 5 will be exchanged by atleast with sz = 6 => merged sz = 11 , then it needs any node will be moved only if size is atleast sz + 1 ,
 - {Movement of element is doubling the merged overall size } 2->5->11->23 ... so (LOGN)  for every node so TC = N(logN)
-
+- we need to also handle leaf cases is mp[a[u]]++ and then comp with mp[a[u]] is imp in case its just the leaf node with no nbrs !
+```
 
 ```cpp
 #include <bits/stdc++.h>

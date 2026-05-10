@@ -1,24 +1,26 @@
 # ReRooting-DP
 
-- 2 imporatant variation i saw in :
+- just solve of 0th node by post -> pre imporatant variation i saw in :
 ### TREE DIAMETER 2 {Sum of distance of each node to every other nodes were necessary}
 ```cpp
 POSTORDER
-void postOrder(int u , int par ) {
-    subtree_sz[u] += 1 ;
-    for(ll v : adj[u]) {
-       if (v == par) continue ;
-         postOrder(v , u) ;
+void postOrder(int u , int par , int depth ) {
+    subtree_sz[u] = 1 ;
+    dp[0] += depth ;
+    
+    for (const int& v : adj[u]) {
+        if (v == par) continue ;
+        postOrder(v , u , depth + 1 ) ;
         subtree_sz[u] += subtree_sz[v] ; 
-        dp[u] += dp[v] + subtree_sz[v] ; 
     }
 }
 void preOrder(int u , int par) {
-    for (ll v : adj[u]) {
-       if (v == par) continue ;
-        dp[v] = dp[u] - subtree_sz[v] + (N-subtree_sz[v]) ;
-        preOrder(v , u) ; 
-     }
+    for (const int& v : adj[u]) {
+        if (v == par) continue ;
+        
+        dp[v] += (dp[u] - subtree_sz[v]) + (N - subtree_sz[v]) ;
+        preOrder(v , u) ;
+    }
 }
 ```
 

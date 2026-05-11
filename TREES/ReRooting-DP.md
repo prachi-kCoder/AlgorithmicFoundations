@@ -1,5 +1,5 @@
 # ReRooting-DP
-
+-> https://leetcode.com/problems/minimum-edge-reversals-so-every-node-is-reachable/?utm_source=chatgpt.com
 - just solve of 0th node by post -> pre imporatant variation i saw in :
 ### TREE DIAMETER 2 {Sum of distance of each node to every other nodes were necessary}
 ```cpp

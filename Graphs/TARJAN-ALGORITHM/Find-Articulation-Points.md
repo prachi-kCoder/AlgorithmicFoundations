@@ -25,7 +25,7 @@ void dfs(int node , int par , vector<bool>& vis, vector<int>& low , vector<int>&
             dfs(v , node , vis , low, tin, is_arti) ;
             low[node] = min(low[node] , low[v]); 
             
-            if (low[v] >= tin[node] && par != -1) {
+            if (tin[u] <= low[v]  && par != -1) {
                 is_arti[node] = true;
             }
             
